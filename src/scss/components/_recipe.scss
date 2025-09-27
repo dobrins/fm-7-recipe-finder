@@ -1,0 +1,38 @@
+@use "../utils" as *;
+
+.recipes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-400);
+
+  & > *,
+  & > * > * {
+    display: grid;
+  }
+}
+
+.recipe {
+  padding: var(--space-100);
+  border-radius: var(--space-125);
+  border: 1px solid var(--neutral-300);
+  background-color: var(--neutral-0);
+  display: grid;
+  gap: var(--space-200);
+  align-content: start;
+
+  &__img {
+    border-radius: var(--space-50);
+  }
+
+  &__name {
+    @include preset("5");
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__overview {
+    @include preset("9");
+    color: var(--neutral-800);
+  }
+}

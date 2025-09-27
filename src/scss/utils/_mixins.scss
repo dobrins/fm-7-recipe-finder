@@ -1,0 +1,120 @@
+@use "variables" as *;
+@use "sass:map";
+
+/* Media Queries */
+
+@mixin mq($breakpoint) {
+  @if $breakpoint == s {
+    @media (width <= 40em) {
+      @content;
+    }
+  } @else if $breakpoint == m {
+    @media (width <= 50em) {
+      @content;
+    }
+  }
+}
+
+/* Typography */
+
+$preset-styles: (
+  "1": (
+    font-family: var(--font-display),
+    font-size: var(--space-900),
+    font-weight: var(--font-extrabold),
+    line-height: 1.1,
+    letter-spacing: -2px,
+  ),
+  "1-tablet": (
+    font-family: var(--font-display),
+    font-size: var(--space-800),
+    font-weight: var(--font-extrabold),
+    line-height: 1.1,
+    letter-spacing: -2px,
+  ),
+  "1-mobile": (
+    font-family: var(--font-display),
+    font-size: var(--space-650),
+    font-weight: var(--font-extrabold),
+    line-height: 1.1,
+    letter-spacing: -2px,
+  ),
+  "2": (
+    font-family: var(--font-display),
+    font-size: var(--space-600),
+    font-weight: var(--font-extrabold),
+    line-height: 1.2,
+    letter-spacing: -2px,
+  ),
+  "2-mobile": (
+    font-family: var(--font-display),
+    font-size: var(--space-500),
+    font-weight: var(--font-extrabold),
+    line-height: 1.2,
+    letter-spacing: -2px,
+  ),
+  "3": (
+    font-family: var(--font-display),
+    font-size: var(--space-400),
+    font-weight: var(--font-bold),
+    line-height: 1.3,
+    letter-spacing: -1px,
+  ),
+  "4": (
+    font-family: var(--font-display),
+    font-size: var(--space-300),
+    font-weight: var(--font-bold),
+    line-height: 1.3,
+    letter-spacing: -1px,
+  ),
+  "5": (
+    font-family: var(--font-display),
+    font-size: var(--space-250),
+    font-weight: var(--font-bold),
+    line-height: 1.4,
+    letter-spacing: -0.5px,
+  ),
+  "6": (
+    font-family: var(--font-body),
+    font-size: var(--space-250),
+    font-weight: var(--font-bold),
+    line-height: 1.5,
+    letter-spacing: -0.4px,
+  ),
+  "7": (
+    font-family: var(--font-display),
+    font-size: var(--space-225),
+    font-weight: var(--font-semibold),
+    line-height: 1.5,
+    letter-spacing: -0.3px,
+  ),
+  "8": (
+    font-family: var(--font-body),
+    font-size: var(--space-200),
+    font-weight: var(--font-bold),
+    line-height: 1.5,
+    letter-spacing: -0.3px,
+  ),
+  "9": (
+    font-family: var(--font-body),
+    font-size: var(--space-200),
+    font-weight: var(--font-medium),
+    line-height: 1.5,
+    letter-spacing: -0.3px,
+  ),
+  "10": (
+    font-family: var(--font-body),
+    font-size: var(--space-175),
+    font-weight: var(--font-bold),
+    line-height: 1.5,
+    letter-spacing: -0.3px,
+  ),
+);
+
+@mixin preset($n) {
+  $preset: map.get($preset-styles, $n);
+
+  @each $prop, $value in $preset {
+    #{$prop}: $value;
+  }
+}

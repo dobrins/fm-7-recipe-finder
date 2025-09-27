@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&family=Nunito:wght@200..1000&display=swap");
+:root {
+  /* FONTS */
+  --font-display: "Nunito", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  /* COLORS */
+  --black: hsl(0deg 0% 0%);
+  --neutral-0: hsl(0deg 0% 100%);
+  --neutral-100: hsl(45deg 20% 95%);
+  --neutral-200: hsl(150deg 10% 89%);
+  --neutral-300: hsl(160deg 13% 84%);
+  --neutral-600: hsl(166deg 22% 28%);
+  --neutral-800: hsl(168deg 21% 28%);
+  --neutral-900: hsl(164deg 45% 16%);
+  --orange: hsl(21deg 98% 71%);
+  --teal-500: hsl(170deg 40% 48%);
+  --indigo-500: hsl(230deg 62% 64%);
+  /* SIZES */
+  --space-0: 0;
+  --space-12: 0.0625rem;
+  --space-25: 0.125rem;
+  --space-50: 0.25rem;
+  --space-100: 0.5rem;
+  --space-125: 0.625rem;
+  --space-150: 0.75rem;
+  --space-175: 0.875rem;
+  --space-200: 1rem;
+  --space-225: 1.125rem;
+  --space-250: 1.25rem;
+  --space-300: 1.5rem;
+  --space-400: 2rem;
+  --space-500: 2.5rem;
+  --space-600: 3rem;
+  --space-650: 3.25rem;
+  --space-700: 3.5rem;
+  --space-750: 3.75rem;
+  --space-800: 4rem;
+  --space-900: 4.5rem;
+  --space-1000: 5rem;
+  --space-1050: 5.5rem;
+  --space-1100: 6rem;
+  --space-1400: 7rem;
+  --space-1500: 7.5rem;
+  --space-1600: 8rem;
+}
+
+/* Media Queries */
+/* Typography */
+body {
+  background-color: var(--neutral-100);
+  font-family: var(--font-body);
+  color: var(--neutral-900);
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+body {
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: currentcolor;
+}
+a:focus-visible {
+  outline: 0;
+}
+
+.recipes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--space-400);
+}
+.recipes > *, .recipes > * > * {
+  display: grid;
+}
+
+.recipe {
+  padding: var(--space-100);
+  border-radius: var(--space-125);
+  border: 1px solid var(--neutral-300);
+  background-color: var(--neutral-0);
+  display: grid;
+  gap: var(--space-200);
+  align-content: start;
+}
+.recipe__img {
+  border-radius: var(--space-50);
+}
+.recipe__name {
+  font-family: var(--font-display);
+  font-size: var(--space-250);
+  font-weight: var(--font-bold);
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recipe__overview {
+  font-family: var(--font-body);
+  font-size: var(--space-200);
+  font-weight: var(--font-medium);
+  line-height: 1.5;
+  letter-spacing: -0.3px;
+  color: var(--neutral-800);
+}
+
+input[type=checkbox] {
+  appearance: none;
+  border-radius: var(--space-50);
+  width: var(--space-225);
+  height: var(--space-225);
+  border: var(--space-12) solid var(--grey-500);
+  position: relative;
+  font-family: system-ui, sans-serif;
+  transition: 0.2s all ease-in-out 0.1s;
+  flex-shrink: 0;
+}
+input[type=checkbox]::after {
+  content: "";
+  display: block;
+  width: 72%;
+  height: 72%;
+  position: absolute;
+  left: 14%;
+  top: 14%;
+  transition: 0.2s transform ease-in-out 0.1s;
+  background-color: var(--white);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0) rotate(180deg);
+}
+input[type=checkbox]:checked {
+  border-color: var(--purple-600);
+  background-color: var(--purple-600);
+  transition: 0.3s all ease-in-out;
+}
+input[type=checkbox]:checked::after {
+  transform: scale(1) rotate(0);
+  transition-delay: 0;
+}
+input[type=checkbox]:focus {
+  outline: 0;
+  border-color: var(--purple-600);
+}
+
+main {
+  width: 100%;
+  max-width: 75rem;
+  margin-inline: auto;
+}
+
+/*# sourceMappingURL=style.css.map */

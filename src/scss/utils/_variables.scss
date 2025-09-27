@@ -1,0 +1,61 @@
+@use "sass:color";
+
+:root {
+  /* FONTS */
+
+  --font-display: "Nunito", sans-serif;
+  --font-body: "Nunito Sans", sans-serif;
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* COLORS */
+
+  --black: hsl(0deg 0% 0%);
+
+  --neutral-0: hsl(0deg 0% 100%);
+  --neutral-100: hsl(45deg 20% 95%);
+  --neutral-200: hsl(150deg 10% 89%);
+  --neutral-300: hsl(160deg 13% 84%);
+  --neutral-600: hsl(166deg 22% 28%);
+  --neutral-800: hsl(168deg 21% 28%);
+  --neutral-900: hsl(164deg 45% 16%);
+
+  --orange: hsl(21deg 98% 71%);
+
+  --teal-500: hsl(170deg 40% 48%);
+
+  --indigo-500: hsl(230deg 62% 64%);
+
+  /* SIZES */
+
+  --space-0: 0; // 0px
+  --space-12: 0.0625rem; // 1px
+  --space-25: 0.125rem; // 2px
+  --space-50: 0.25rem; // 4px
+  --space-100: 0.5rem; // 8px
+  --space-125: 0.625rem; // 10px
+  --space-150: 0.75rem; // 12px
+  --space-175: 0.875rem; // 14px
+  --space-200: 1rem; // 16px
+  --space-225: 1.125rem; // 18px
+  --space-250: 1.25rem; // 20px
+  --space-300: 1.5rem; // 24px
+  --space-400: 2rem; // 32px
+  --space-500: 2.5rem; // 40px
+  --space-600: 3rem; // 48px
+  --space-650: 3.25rem; // 52px
+  --space-700: 3.5rem; // 56px
+  --space-750: 3.75rem; // 60px
+  --space-800: 4rem; // 64px
+  --space-900: 4.5rem; // 72px
+  --space-1000: 5rem; // 80px
+  --space-1050: 5.5rem; // 88px
+  --space-1100: 6rem; // 96px
+  --space-1400: 7rem; // 112px
+  --space-1500: 7.5rem; // 120px
+  --space-1600: 8rem; // 128px
+}
