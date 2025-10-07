@@ -1,0 +1,66 @@
+@use "../utils/" as *;
+
+@mixin dropdown-style {
+  @include preset("7");
+  border-radius: var(--space-100);
+  padding-inline: var(--space-200);
+  background-color: var(--white);
+  color: var(--clr-button-txt);
+  border: var(--space-12) solid var(--neutral-300);
+}
+
+.dropdown {
+  position: relative;
+
+  &__btn {
+    @include dropdown-style;
+    border: none;
+    height: var(--space-600);
+    display: flex;
+    gap: var(--space-100);
+    min-width: 11.5rem;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    outline: var(--space-12) solid var(--neutral-300);
+
+    @include mq(s) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    &:hover,
+    &:focus {
+      outline: var(--space-12) solid var(--neutral-900);
+    }
+  }
+
+  &__icon {
+    width: var(--space-200);
+    height: var(--space-200);
+    fill: currentcolor;
+    transition: transform 0.2s;
+    background-image: url("/public/images/icon-chevron-down.svg");
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__menu {
+    @include dropdown-style;
+    width: 15rem;
+    padding-block: var(--space-200);
+    position: absolute;
+    top: 3.5rem;
+    z-index: 1;
+  }
+
+  &__item {
+    height: var(--space-500);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--space-100);
+  }
+}

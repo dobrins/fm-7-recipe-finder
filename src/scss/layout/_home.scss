@@ -1,0 +1,157 @@
+@use "../utils" as *;
+
+.home {
+  h1 {
+    @include preset("1");
+
+    @include mq(m) {
+      @include preset("1-tablet");
+    }
+  }
+
+  h2 {
+    @include preset("2");
+  }
+
+  h3 {
+    @include preset("3");
+    margin-block: var(--space-300) var(--space-150);
+  }
+
+  p {
+    color: var(--neutral-800);
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-400);
+
+    @include mq(m) {
+      grid-template-columns: auto;
+    }
+  }
+
+  &__icon {
+    display: grid;
+    width: var(--space-750);
+    height: var(--space-750);
+    background-color: var(--white);
+    place-content: center;
+    border: var(--space-12) solid var(--neutral-200);
+    border-radius: var(--space-150);
+  }
+}
+
+.real-life {
+  @include container;
+  border-block-start: var(--space-12) solid var(--neutral-300);
+  display: grid;
+  grid-template-columns: 4fr 5fr;
+  align-items: center;
+  gap: var(--space-650);
+  padding-block: var(--space-1100);
+
+  @include mq(m) {
+    grid-template-columns: auto;
+  }
+
+  div {
+    display: grid;
+    gap: var(--space-250);
+  }
+
+  img {
+    border-radius: var(--space-200);
+  }
+}
+
+.accent {
+  display: inline-block;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: var(--orange);
+    border-radius: var(--space-50);
+    width: calc(100% + var(--space-50));
+    height: var(--space-150);
+    bottom: var(--space-50);
+    left: calc(-1 * var(--space-25));
+    z-index: -1;
+  }
+
+  &--big {
+    &::after {
+      opacity: 0.4;
+      height: var(--space-500);
+      bottom: var(--space-12);
+    }
+  }
+}
+
+.section-1 {
+  background-image: url("/public/images/pattern-squiggle-1.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: calc(100% - 10rem);
+
+  @include mq(m) {
+    background-position-y: calc(100% - 7rem);
+  }
+
+  @include mq(s) {
+    background-position-y: calc(100% - 4rem);
+  }
+
+  & .container {
+    display: grid;
+    justify-items: center;
+    padding-block: var(--space-1000);
+    text-align: center;
+
+    @include mq(m) {
+      justify-items: start;
+      text-align: start;
+      padding-block: var(--space-600);
+    }
+  }
+
+  p {
+    margin-block-start: var(--space-150);
+    width: 50%;
+
+    @include mq(m) {
+      width: initial;
+    }
+  }
+  a {
+    margin-block-start: var(--space-500);
+
+    @include mq(m) {
+      margin-block-start: var(--space-400);
+    }
+  }
+  img {
+    margin-block-start: var(--space-1000);
+    border-radius: var(--space-150);
+    outline: var(--space-125) solid var(--white);
+
+    @include mq(m) {
+      margin-block-start: var(--space-500);
+    }
+  }
+}
+
+.section-2 {
+  @include container;
+  padding-block-end: var(--space-1200);
+  display: grid;
+  gap: var(--space-600);
+  justify-items: center;
+
+  @include mq(m) {
+    justify-items: start;
+  }
+}

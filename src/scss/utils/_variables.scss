@@ -15,11 +15,12 @@
   /* COLORS */
 
   --black: hsl(0deg 0% 0%);
+  --white: hsl(0deg 0% 100%);
 
-  --neutral-0: hsl(0deg 0% 100%);
   --neutral-100: hsl(45deg 20% 95%);
   --neutral-200: hsl(150deg 10% 89%);
   --neutral-300: hsl(160deg 13% 84%);
+  --neutral-400: hsl(165deg 15% 84%);
   --neutral-600: hsl(166deg 22% 28%);
   --neutral-800: hsl(168deg 21% 28%);
   --neutral-900: hsl(164deg 45% 16%);
@@ -53,8 +54,9 @@
   --space-800: 4rem; // 64px
   --space-900: 4.5rem; // 72px
   --space-1000: 5rem; // 80px
-  --space-1050: 5.5rem; // 88px
-  --space-1100: 6rem; // 96px
+  --space-1100: 5.5rem; // 88px
+  --space-1200: 6rem; // 96px
+  --space-1300: 6.5rem; // 104px
   --space-1400: 7rem; // 112px
   --space-1500: 7.5rem; // 120px
   --space-1600: 8rem; // 128px

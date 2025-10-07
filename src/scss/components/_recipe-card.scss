@@ -1,0 +1,56 @@
+@use "../utils" as *;
+
+.recipe-card {
+  display: grid;
+
+  article {
+    padding: var(--space-100);
+    border-radius: var(--space-125);
+    border: 1px solid var(--neutral-300);
+    background-color: var(--white);
+    display: grid;
+    gap: var(--space-200);
+    position: relative;
+    transform: translateY(0);
+    transition: transform 0.2s ease-in-out;
+    will-change: transform;
+
+    &:hover {
+      border: 1px solid var(--neutral-600);
+    }
+  }
+
+  div {
+    overflow: hidden;
+    display: grid;
+    gap: var(--space-125);
+    padding-inline: var(--space-100);
+  }
+
+  ul {
+    padding-inline: var(--space-100);
+  }
+
+  &__img {
+    border-radius: var(--space-50);
+    aspect-ratio: 6 / 5;
+    object-fit: cover;
+  }
+
+  &__title {
+    @include preset("5");
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__overview {
+    @include preset("9");
+    color: var(--neutral-800);
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+  }
+}

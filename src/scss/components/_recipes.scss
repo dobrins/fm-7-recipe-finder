@@ -1,0 +1,65 @@
+@use "../utils" as *;
+
+.recipes {
+  @include container;
+  display: grid;
+  padding-block-start: var(--space-1000);
+
+  @include mq(m) {
+    padding-block-start: var(--space-800);
+  }
+
+  @include mq(s) {
+    padding-block-start: var(--space-600);
+  }
+
+  &__title {
+    @include preset("2");
+    text-align: center;
+
+    @include mq(m) {
+      text-align: start;
+    }
+
+    @include mq(s) {
+      @include preset("2-mobile");
+    }
+  }
+
+  &__description {
+    @include preset("6");
+    margin-block: var(--space-150) var(--space-800);
+    width: 60%;
+    justify-self: center;
+    text-align: center;
+    color: var(--neutral-800);
+
+    @include mq(m) {
+      width: auto;
+      text-align: start;
+      margin-block-end: var(--space-600);
+    }
+  }
+
+  &__filters {
+    display: grid;
+    grid-template-columns: max-content max-content auto;
+    gap: var(--space-200);
+    margin-block-end: var(--space-250);
+
+    @include mq(s) {
+      grid-template-columns: auto;
+    }
+  }
+}
+
+.recipes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: var(--space-400);
+  padding-block-end: var(--space-1000);
+
+  @include mq(m) {
+    padding-block-end: var(--space-600);
+  }
+}

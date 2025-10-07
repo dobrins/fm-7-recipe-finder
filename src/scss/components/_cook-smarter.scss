@@ -1,0 +1,40 @@
+@use "../utils" as *;
+
+.cook-smarter {
+  background-color: var(--neutral-200);
+  background-image: url("/public/images/pattern-fork.svg"),
+    url("/public/images/pattern-knife.svg");
+  background-repeat: no-repeat;
+  background-position: top var(--space-500) left calc(-1 * var(--space-1000)),
+    top var(--space-200) right calc(-1 * var(--space-1000));
+  padding: var(--space-1200) var(--space-200);
+  border-radius: var(--space-200);
+  text-align: center;
+  display: grid;
+  gap: var(--space-150);
+  justify-items: center;
+
+  &__title {
+    @include preset("2");
+
+    @include mq(s) {
+      @include preset("2-mobile");
+    }
+  }
+
+  @include mq(m) {
+    background-size: 25%;
+    background-position: bottom calc(-1 * var(--space-400)) left,
+      top calc(-1 * var(--space-600)) right;
+  }
+
+  @include mq(s) {
+    background-image: none;
+    padding-block: var(--space-600);
+  }
+
+  .button {
+    margin-block-start: var(--space-300);
+    padding: var(--space-200) var(--space-250);
+  }
+}

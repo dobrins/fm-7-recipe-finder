@@ -1,0 +1,53 @@
+@use "../utils" as *;
+
+.input-container {
+  position: relative;
+  width: 20rem;
+  height: var(--space-600);
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: var(--space-100);
+  align-items: center;
+  padding-inline: var(--space-200);
+  border-radius: var(--space-125);
+  outline: var(--space-12) solid var(--neutral-300);
+
+  justify-self: end;
+
+  @include mq(m) {
+    width: auto;
+    justify-self: auto;
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+  }
+
+  @include mq(s) {
+    justify-self: stretch;
+    width: 100%;
+    grid-row: auto;
+  }
+
+  &:focus-within {
+    outline: var(--space-12) solid var(--neutral-900);
+  }
+
+  &__icon {
+    width: var(--space-250);
+    height: var(--space-250);
+    fill: currentcolor;
+  }
+}
+
+.input {
+  @include preset("7");
+  border: none;
+
+  &::placeholder {
+    color: var(--neutral-800);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

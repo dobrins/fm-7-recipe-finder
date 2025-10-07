@@ -1,66 +1,101 @@
 import { useParams, Link } from "react-router-dom";
+import RecipeCard from "../components/RecipeCard";
 import { recipes } from "../data/recipes";
-// import { asset } from "../utils/asset";
+import RecipeStats from "../components/RecipeStats";
+import { useTitle } from "../hooks/useTitle";
+import NotFoundRecipe from "../components/NotFoundRecipe";
 
-export default function RecipeDetail() {
+type MoreRecipesProps = {
+  recipe: number;
+};
+
+const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const recipe = recipes.find((r) => r.slug === slug);
 
+  useTitle(recipe?.title ?? "");
+
   if (!recipe) {
-    return (
-      <div>
-        <p>Recipe not found.</p>
-        <Link
-          to="/recipes"
-          className="underline">
-          Back to list
-        </Link>
-      </div>
-    );
+    return <NotFoundRecipe />;
   }
 
-  document.title = `${recipe.title} · Recipes`;
-
   return (
-    <article>
-      <Link
-        to="/recipes"
-        className="underline">
-        ← All recipes
-      </Link>
-      <h1 className="">{recipe.title}</h1>
+    <>
+      <article className="recipe">
+        <p className="breadcrumb">
+          <Link
+            to="/recipes"
+            className="underline">
+            Recipes
+          </Link>{" "}
+          <span>/</span>
+          <span>{recipe.title}</span>
+        </p>
 
-      <img
-        src={recipe.image.large}
-        alt={recipe.title}
-        className=""
-      />
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcSet={recipe.image.large}
+            type="image/webp"
+          />
+          <img
+            src={recipe.image.small}
+            alt={recipe.overview}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
 
-      <p>{recipe.overview}</p>
-
-      <div className="flex gap-4 text-sm">
-        <span>Servings: {recipe.servings}</span>
-        <span>Prep: {recipe.prepMinutes} min</span>
-        <span>Cook: {recipe.cookMinutes} min</span>
-      </div>
-
-      <section>
-        <h2 className="text-xl font-semibold">Ingredients</h2>
-        <ul className="list-disc pl-6">
-          {recipe.ingredients.map((i, idx) => (
-            <li key={idx}>{i}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section>
-        <h2 className="text-xl font-semibold">Instructions</h2>
-        <ol className="list-decimal pl-6">
-          {recipe.instructions.map((step, idx) => (
-            <li key={idx}>{step}</li>
-          ))}
-        </ol>
-      </section>
-    </article>
+        <div className="recipe__content">
+          <h1>{recipe.title}</h1>
+          <p>{recipe.overview}</p>
+          <RecipeStats
+            recipe={recipe}
+            biggerFont
+          />
+          <section>
+            <h2 className="recipe__list-title">Ingredients:</h2>
+            <ul className="recipe__list-items">
+              {recipe.ingredients.map((i, idx) => (
+                <li key={idx}>{i}</li>
+              ))}
+            </ul>
+          </section>
+          <section>
+            <h2 className="recipe__list-title">Instructions:</h2>
+            <ol className="recipe__list-items">
+              {recipe.instructions.map((step, idx) => (
+                <li key={idx}>{step}</li>
+              ))}
+            </ol>
+          </section>
+        </div>
+      </article>
+      <hr className="divider" />
+      <MoreRecipes recipe={recipe.id} />
+    </>
   );
-}
+};
+
+// LOCAL COMPONENT
+
+const MoreRecipes = ({ recipe }: MoreRecipesProps) => {
+  return (
+    <div className="more-recipes">
+      <h2>More recipes</h2>
+      <ul className="recipes-list">
+        {recipes
+          .filter((r) => r.id !== recipe)
+          .slice(0, 3)
+          .map((r) => (
+            <RecipeCard
+              recipe={r}
+              key={r.id}
+            />
+          ))}
+      </ul>
+    </div>
+  );
+};
+
+export default RecipeDetail;

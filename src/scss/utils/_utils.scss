@@ -1,0 +1,84 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.divider {
+  height: var(--space-12);
+  background-color: var(--neutral-300);
+  margin-block: var(--space-800);
+  border: 0;
+
+  @include mq(s) {
+    margin-block: var(--space-600);
+  }
+
+  &--big-margin {
+    margin-block: var(--space-1200);
+    @include mq(s) {
+      margin-block: var(--space-600);
+    }
+  }
+}
+
+.badge {
+  @include preset("5");
+  display: grid;
+  align-items: center;
+  height: var(--space-400);
+  background-color: var(--orange);
+  border-radius: var(--space-50);
+  padding-inline: var(--space-100);
+}
+
+.container {
+  @include container;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+input[type="radio"] {
+  appearance: none;
+  border-radius: 50%;
+  width: var(--space-250);
+  height: var(--space-250);
+  border: var(--space-25) solid var(--neutral-400);
+  position: relative;
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 0 0 var(--space-100) rgb(0 0 0 / 5%);
+
+  &::after {
+    transition: 0.1s transform linear;
+    content: "";
+    width: var(--space-125);
+    height: var(--space-125);
+    border-radius: 50%;
+    background-color: var(--neutral-900);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  &:checked {
+    border-color: var(--neutral-900);
+    box-shadow: 0 0 0 var(--space-50) var(--neutral-200);
+
+    &::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}

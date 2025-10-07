@@ -1,0 +1,40 @@
+@use "../utils" as *;
+
+.nav {
+  @include mq(m) {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-100);
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+
+    &::after {
+      content: "";
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: var(--space-50);
+      background-color: var(--orange);
+      border-radius: var(--space-50);
+      left: 0;
+      bottom: calc(-1 * var(--space-50));
+    }
+  }
+
+  a {
+    @include preset("7");
+    display: inline-block;
+    padding: var(--space-200) var(--space-200);
+
+    &:hover span::after,
+    &.active span::after {
+      display: inline-block;
+    }
+  }
+}

@@ -1,0 +1,139 @@
+@use "../utils" as *;
+
+.about {
+  &__section {
+    @include container;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-800);
+
+    @include mq(m) {
+      gap: var(--space-500);
+    }
+  }
+
+  h1,
+  h2 {
+    @include preset("2");
+
+    @include mq(s) {
+      @include preset("2-mobile");
+    }
+  }
+
+  p {
+    @include preset("6");
+    color: var(--neutral-800);
+  }
+
+  img {
+    border-radius: var(--space-250);
+  }
+
+  &__section-1 {
+    padding-block-start: var(--space-1000);
+    position: relative;
+
+    @include mq(m) {
+      padding-block-start: var(--space-800);
+      grid-template-columns: auto;
+    }
+
+    @include mq(s) {
+      padding-block-start: var(--space-600);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 201px;
+      height: 144px;
+      background-image: url("/public/images/pattern-squiggle-2.svg");
+      background-repeat: no-repeat;
+      inset-inline-start: clamp(800px, 78vw, 1080px);
+      inset-block-end: 110px;
+
+      @include mq(m) {
+        display: none;
+      }
+    }
+
+    div {
+      display: grid;
+      gap: var(--space-200);
+      justify-items: start;
+    }
+    & > div {
+      gap: var(--space-300);
+      align-content: center;
+    }
+  }
+
+  &__section-2,
+  &__section-3,
+  &__section-4 {
+    grid-template-columns: 1fr 2fr;
+
+    @include mq(m) {
+      grid-template-columns: auto;
+    }
+  }
+
+  &__section-4 {
+    padding-block-end: var(--space-1200);
+
+    p {
+      margin-block-start: var(--space-250);
+    }
+
+    ul {
+      @include preset("6");
+      margin-block-start: var(--space-150);
+      list-style: initial;
+      padding-inline-start: var(--space-400);
+      color: var(--neutral-800);
+    }
+  }
+}
+
+.custom-bullet-list {
+  display: grid;
+  gap: var(--space-600);
+
+  @include mq(m) {
+    gap: var(--space-400);
+  }
+
+  @include mq(s) {
+    gap: var(--space-300);
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+
+    gap: var(--space-150) var(--space-250);
+
+    &::before {
+      content: "";
+      flex-shrink: 0;
+      display: inline-flex;
+      width: var(--space-300);
+      height: var(--space-300);
+      background-image: url("/public/images/icon-bullet-point.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      margin-block-start: var(--space-25);
+    }
+
+    span {
+      @include preset("4");
+    }
+
+    p {
+      grid-column: 2 / -1;
+    }
+  }
+}

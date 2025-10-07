@@ -1,0 +1,22 @@
+@use "../utils" as *;
+
+.breadcrumb {
+  @include preset("7");
+  display: flex;
+  gap: var(--space-100);
+  flex-wrap: wrap;
+
+  & > * {
+    opacity: 0.6;
+
+    &:last-child {
+      opacity: 1;
+    }
+  }
+
+  a {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

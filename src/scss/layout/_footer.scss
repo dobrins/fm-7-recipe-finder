@@ -1,0 +1,36 @@
+@use "../utils" as *;
+
+.footer {
+  &--recipes {
+    border-block-start: var(--space-12) solid var(--neutral-300);
+  }
+
+  &__container {
+    @include container;
+    @include preset("9");
+    height: var(--space-1300);
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include mq(s) {
+      height: auto;
+      padding-block: var(--space-500) var(--space-250);
+      grid-template-columns: auto;
+      justify-items: center;
+      place-content: center;
+      gap: var(--space-300);
+
+      ul {
+        grid-row: 1 / 2;
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: var(--space-250);
+      justify-content: end;
+    }
+  }
+}

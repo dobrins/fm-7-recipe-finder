@@ -3,12 +3,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200..1000&family=Nunito:wght@200..1000&display=swap");
 
 body {
-  // @include preset("6");
+  @include preset("6");
   background-color: var(--neutral-100);
   font-family: var(--font-body);
   color: var(--neutral-900);
 
-  // font-family: var(--font-display);
-  // font-size: 40px;
-  // color: var(--blue-950);
+  & > div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
 }

@@ -1,38 +1,127 @@
 @use "../utils" as *;
 
-.recipes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: var(--space-400);
+.recipe {
+  @include container;
 
-  & > *,
-  & > * > * {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-200) var(--space-500);
+  margin-block-start: var(--space-600);
+
+  @include mq(m) {
+    grid-template-columns: auto;
+    gap: var(--space-500);
+  }
+
+  & > * {
+    &:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  img {
+    border-radius: var(--space-200);
+  }
+
+  h1 {
+    @include preset("2");
+
+    @include mq(m) {
+      @include preset("2-mobile");
+    }
+  }
+
+  &__content {
     display: grid;
+    gap: var(--space-250);
+  }
+
+  &__list-items {
+    @include preset("6");
+    color: var(--neutral-800);
+    margin-block-start: var(--space-200);
+    display: grid;
+    gap: var(--space-100);
+
+    li {
+      display: flex;
+      gap: var(--space-100);
+
+      &::before {
+        content: "";
+        flex-shrink: 0;
+        display: inline-flex;
+        width: var(--space-300);
+        height: var(--space-300);
+        background-image: url("/public/images/icon-bullet-point.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin-block-start: var(--space-25);
+      }
+    }
+  }
+
+  &__stats {
+    @include preset("9");
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-100) var(--space-200);
+
+    &--bigger-font {
+      @include preset("7");
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-100);
+
+      &::before {
+        content: "";
+        display: inline-flex;
+        width: var(--space-250);
+        height: var(--space-250);
+        background-image: url("/public/images/icon-servings.svg");
+        background-repeat: no-repeat;
+      }
+
+      &:nth-child(2) {
+        &::before {
+          background-image: url("/public/images/icon-prep-time.svg");
+        }
+      }
+      &:nth-child(3) {
+        &::before {
+          background-image: url("/public/images/icon-cook-time.svg");
+        }
+      }
+    }
+  }
+
+  &__list-title {
+    @include preset("4");
   }
 }
 
-.recipe {
-  padding: var(--space-100);
-  border-radius: var(--space-125);
-  border: 1px solid var(--neutral-300);
-  background-color: var(--neutral-0);
+.more-recipes {
+  @include container;
   display: grid;
-  gap: var(--space-200);
-  align-content: start;
+  gap: var(--space-300);
+}
 
-  &__img {
-    border-radius: var(--space-50);
-  }
+.not-found-recipe {
+  background-color: var(--neutral-300);
+  padding-block: var(--space-1200);
+  border-radius: var(--space-200);
+  text-align: center;
+  display: grid;
+  gap: var(--space-150);
+  justify-items: center;
+  margin-block-start: var(--space-1200);
 
-  &__name {
-    @include preset("5");
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  &__overview {
-    @include preset("9");
-    color: var(--neutral-800);
+  .button {
+    margin-block-start: var(--space-300);
+    padding: var(--space-200) var(--space-250);
   }
 }
