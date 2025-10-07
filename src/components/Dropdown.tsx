@@ -21,7 +21,7 @@ export default function Dropdown({
 
   const select = (v: number | null) => {
     onSelect(v);
-    // setIsOpen(false);
+    setIsOpen(false);
   };
 
   // close on outside click
